@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofia — Progresso Semanal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --color-bg: #0B0F19;
+            --color-card: #1E293B;
+            --color-primary: #10B981;
+            --color-secondary: #8B5CF6; /* Purple weekly look */
+            --color-text-main: #F8FAFC;
+            --color-text-muted: #94A3B8;
+            --color-border: #334155;
+            --color-success: #10B981;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 34px;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p.subtitle {
+            font-size: 15px;
+            color: var(--color-text-muted);
+            margin-top: 8px;
+        }
+        .progress-indicator {
+            background-color: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .progress-bar-bg {
+            width: 120px;
+            height: 10px;
+            background-color: var(--color-bg);
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            width: 100%; /* Completed for the requested features! */
+        }
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            margin-top: 30px;
+        }
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 20px;
+        }
+        .timeline-week {
+            font-family: 'Outfit', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-secondary);
+            padding-top: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .timeline-card {
+            background-color: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+        }
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            left: -31px;
+            top: 24px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: var(--color-primary);
+            border: 2px solid var(--color-bg);
+        }
+        .badge {
+            font-size: 11px;
+            font-weight: 700;
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--color-success);
+            padding: 4px 10px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+        .timeline-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--color-text-muted);
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        .tasks-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .task-item {
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-text-main);
+        }
+        .task-item i {
+            color: var(--color-success);
+            width: 14px;
+            height: 14px;
+        }
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+        .nav-back:hover {
+            color: var(--color-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">
+            <i data-lucide="arrow-left"></i> Voltar para a Aplicação
+        </a>
+        <header>
+            <div>
+                <h1>Sofia — Relatório de Progresso</h1>
+                <p class="subtitle">Acompanhamento semanal de entregas e sprints do projeto</p>
+            </div>
+            <div class="progress-indicator">
+                <span style="font-size: 12px; font-weight: bold; color: var(--color-primary);">100% Concluído</span>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="timeline">
+            <!-- Week 1 -->
+            <div class="timeline-item">
+                <div class="timeline-week">
+                    <i data-lucide="calendar"></i> Semana 1
+                </div>
+                <div class="timeline-card">
+                    <span class="badge">Entregue</span>
+                    <h3 class="timeline-title">Estrutura SPA e Scaffolding Visual</h3>
+                    <p class="timeline-desc">Modelagem do mockup móvel com contêiner responsivo, carretel de status do celular e sistema de rotas dinâmicas em Vanilla Javascript.</p>
+                    <ul class="tasks-list">
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Criação do index.html com frame móvel e status bar</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Sistema de Design em index.css (cores, fontes Outfit/Inter)</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Lógica de navegação SPA bottom nav-bar em app.js</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="timeline-item">
+                <div class="timeline-week">
+                    <i data-lucide="calendar"></i> Semana 2
+                </div>
+                <div class="timeline-card">
+                    <span class="badge">Entregue</span>
+                    <h3 class="timeline-title">Banco de Dados e APIs do Dispositivo</h3>
+                    <p class="timeline-desc">Instanciação do banco mockado no LocalStorage para retenção de relatos de 30 dias e desenvolvimento dos serviços de reconhecimento de voz e visão local.</p>
+                    <ul class="tasks-list">
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> services/api.js com eventos cronológicos mockados</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> services/voice.js com Web SpeechRecognition e speechSynthesis</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> services/vision.js com captura de webcam nativa (getUserMedia)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 3 -->
+            <div class="timeline-item">
+                <div class="timeline-week">
+                    <i data-lucide="calendar"></i> Semana 3
+                </div>
+                <div class="timeline-card">
+                    <span class="badge">Entregue</span>
+                    <h3 class="timeline-title">Sistema de Paletas de Cores</h3>
+                    <p class="timeline-desc">Definição dos 4 temas visuais dinâmicos (Light, Dark, Casual e Retro) e injeção do botão de temas global no cabeçalho comum para troca dinâmica em qualquer tela.</p>
+                    <ul class="tasks-list">
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> CSS temático em index.css (dark, casual, retro)</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Botão global de paleta no cabeçalho para comutação instantânea</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Persistência do tema escolhido pelo usuário no LocalStorage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Week 4 -->
+            <div class="timeline-item">
+                <div class="timeline-week">
+                    <i data-lucide="calendar"></i> Semana 4
+                </div>
+                <div class="timeline-card">
+                    <span class="badge">Entregue</span>
+                    <h3 class="timeline-title">Ajustes de IA e Chaves Produtivas</h3>
+                    <p class="timeline-desc">Mapeamento e criação das áreas de inputs das chaves de API OpenAI e ElevenLabs. Listas de modelos de LLMs selecionáveis e agentes de vozes disponíveis.</p>
+                    <ul class="tasks-list">
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Painel de chaves OpenAI e ElevenLabs na tela de Ajustes</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Seletor de modelos LLMs (gpt-4o, gpt-4o-mini, o1-mini, etc.)</li>
+                        <li class="task-item"><i data-lucide="check-circle-2"></i> Seletor de agentes de voz da ElevenLabs (Rachel, Drew, Paul)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

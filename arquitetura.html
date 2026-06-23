@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sofia — Arquitetura do Sistema</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --color-bg: #0F172A;
+            --color-card: #1E293B;
+            --color-primary: #10B981;
+            --color-secondary: #0284C7;
+            --color-text-main: #F8FAFC;
+            --color-text-muted: #94A3B8;
+            --color-border: #334155;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text-main);
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 20px;
+        }
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            margin: 0;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p.subtitle {
+            font-size: 16px;
+            color: var(--color-text-muted);
+            margin-top: 8px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            margin-top: 30px;
+        }
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        .card {
+            background-color: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .card h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-primary);
+        }
+        .card h2 i {
+            color: var(--color-secondary);
+        }
+        .card p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--color-text-muted);
+        }
+        .code-box {
+            background-color: #0B0F19;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            border: 1px solid var(--color-border);
+            margin-top: 12px;
+            color: #38BDF8;
+        }
+        .diagram-container {
+            width: 100%;
+            background-color: var(--color-card);
+            border: 1px solid var(--color-border);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .diagram-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            align-self: flex-start;
+        }
+        svg {
+            max-width: 100%;
+            height: auto;
+        }
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 20px;
+            transition: color 0.2s;
+        }
+        .nav-back:hover {
+            color: var(--color-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">
+            <i data-lucide="arrow-left"></i> Voltar para a Aplicação
+        </a>
+        <header>
+            <h1>Sofia — Arquitetura de Software</h1>
+            <p class="subtitle">Visão técnica do ecossistema de dados e APIs integradas</p>
+        </header>
+
+        <div class="diagram-container">
+            <div class="diagram-title">Estrutura de Roteamento e Serviços</div>
+            <!-- Visually clean architecture SVG flow -->
+            <svg width="700" height="300" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Outer Frame -->
+                <rect x="10" y="10" width="180" height="280" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <text x="100" y="36" fill="#F8FAFC" font-family="Outfit" font-size="14" font-weight="bold" text-anchor="middle">SPA Frontend (HTML/JS)</text>
+                
+                <!-- Front Elements -->
+                <rect x="25" y="60" width="150" height="40" rx="6" fill="#0F172A" stroke="#10B981" stroke-width="1.5"/>
+                <text x="100" y="85" fill="#F8FAFC" font-family="sans-serif" font-size="12" text-anchor="middle">UI Roteador (app.js)</text>
+                
+                <rect x="25" y="115" width="150" height="110" rx="6" fill="#0F172A" stroke="#0284C7" stroke-width="1.5"/>
+                <text x="100" y="135" fill="#38BDF8" font-family="Outfit" font-size="11" font-weight="bold" text-anchor="middle">Serviços Desacoplados</text>
+                <text x="100" y="155" fill="#94A3B8" font-family="sans-serif" font-size="10" text-anchor="middle">- voice.js (Fala/Voz)</text>
+                <text x="100" y="175" fill="#94A3B8" font-family="sans-serif" font-size="10" text-anchor="middle">- vision.js (Câmera/OCR)</text>
+                <text x="100" y="195" fill="#94A3B8" font-family="sans-serif" font-size="10" text-anchor="middle">- api.js (Database Proxy)</text>
+
+                <!-- Flow Arrows -->
+                <line x1="190" y1="170" x2="250" y2="170" stroke="#10B981" stroke-width="3" marker-end="url(#arrow)"/>
+                
+                <!-- Middleware & External integrations -->
+                <rect x="260" y="10" width="200" height="280" rx="12" fill="#1E293B" stroke="#334155" stroke-width="2"/>
+                <text x="360" y="36" fill="#F8FAFC" font-family="Outfit" font-size="14" font-weight="bold" text-anchor="middle">Backend Integrador (n8n)</text>
+                
+                <rect x="275" y="70" width="170" height="40" rx="6" fill="#0F172A" stroke="#D97706" stroke-width="1.5"/>
+                <text x="360" y="95" fill="#F8FAFC" font-family="sans-serif" font-size="11" text-anchor="middle">Webhook de Transcrição</text>
+
+                <rect x="275" y="130" width="170" height="40" rx="6" fill="#0F172A" stroke="#D97706" stroke-width="1.5"/>
+                <text x="360" y="155" fill="#F8FAFC" font-family="sans-serif" font-size="11" text-anchor="middle">Processador OCR de Imagem</text>
+
+                <rect x="275" y="190" width="170" height="40" rx="6" fill="#0F172A" stroke="#D97706" stroke-width="1.5"/>
+                <text x="360" y="215" fill="#F8FAFC" font-family="sans-serif" font-size="11" text-anchor="middle">Sincronizador Supabase</text>
+
+                <!-- Final Cloud Providers -->
+                <line x1="460" y1="90" x2="520" y2="90" stroke="#0284C7" stroke-width="2" marker-end="url(#arrow)"/>
+                <line x1="460" y1="150" x2="520" y2="150" stroke="#0284C7" stroke-width="2" marker-end="url(#arrow)"/>
+                <line x1="460" y1="210" x2="520" y2="210" stroke="#0284C7" stroke-width="2" marker-end="url(#arrow)"/>
+                
+                <rect x="530" y="70" width="150" height="40" rx="6" fill="#0F172A" stroke="#E11D48" stroke-width="1.5"/>
+                <text x="605" y="95" fill="#F8FAFC" font-family="sans-serif" font-size="11" text-anchor="middle">ElevenLabs API</text>
+
+                <rect x="530" y="130" width="150" height="40" rx="6" fill="#0F172A" stroke="#E11D48" stroke-width="1.5"/>
+                <text x="605" y="155" fill="#F8FAFC" font-family="sans-serif" font-size="11" text-anchor="middle">OpenAI (Whisper/GPT)</text>
+
+                <rect x="530" y="190" width="150" height="40" rx="6" fill="#0F172A" stroke="#E11D48" stroke-width="1.5"/>
+                <text x="605" y="215" fill="#F8FAFC" font-family="sans-serif" font-size="11" text-anchor="middle">Supabase DB / Auth</text>
+
+                <!-- Marker definition -->
+                <defs>
+                    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10B981"/>
+                    </marker>
+                </defs>
+            </svg>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2><i data-lucide="phone"></i> 1. Frontend Modular SPA</h2>
+                <p>O cliente da Sofia é estruturado em uma Single Page Application leve escrita em Javascript Modular (ES6). As telas são renderizadas de forma reativa a partir de classes no diretório <code>components/</code>. A controller <code>app.js</code> sincroniza os dados do paciente ativo e injeta as visões correspondentes sem recarregar o navegador.</p>
+            </div>
+
+            <div class="card">
+                <h2><i data-lucide="database"></i> 2. Proxy de API Desacoplado</h2>
+                <p>Toda a comunicação externa da aplicação passa por proxy em <code>services/api.js</code>. Na demonstração atual, os dados são mockados no LocalStorage. Em produção, basta mapear as chamadas REST para um Client SDK do Supabase, evitando vazamento de lógica nos componentes de visualização.</p>
+                <div class="code-box">
+// Exemplo de chaveamento futuro
+async getEvents(profileId) {
+  // Retorna do Supabase de forma nativa
+  const { data } = await supabase
+    .from('events')
+    .select('*')
+    .eq('profile_id', profileId);
+  return data;
+}
+                </div>
+            </div>
+
+            <div class="card">
+                <h2><i data-lucide="mic"></i> 3. Pipeline de Conversação de Voz</h2>
+                <p>O processamento de áudio utiliza a Web Speech API local para transcrição de fala imediata. Quando configurada a chave de API do ElevenLabs, a síntese de voz (conversão de texto em áudio respondido) é redirecionada para a nuvem da ElevenLabs, gerando uma experiência de fala realista e natural.</p>
+            </div>
+
+            <div class="card">
+                <h2><i data-lucide="scan"></i> 4. OCR e Visão Computacional</h2>
+                <p>O fluxo de câmera acessa o hardware via <code>navigator.mediaDevices</code> e captura frames em tempo real via canvas 2D. O processador está estruturado para redirecionar arquivos base64 para pipelines de processamento da OpenAI (GPT-4o Vision), retornando dados tabulados de receitas e laudos clínicos automaticamente.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (window.lucide) {
+            window.lucide.createIcons();
+        }
+    </script>
+</body>
+</html>

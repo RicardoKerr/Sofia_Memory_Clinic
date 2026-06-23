@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sofia — Memória Clínica Inteligente</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="app-wrapper">
+        <!-- Phone Frame Wrapper to look premium on desktops, and adapt naturally to mobile devices -->
+        <div id="phone-frame">
+            <!-- Simulated Phone Status Bar -->
+            <div id="status-bar">
+                <div class="time" id="status-time">08:01</div>
+                <div class="icons">
+                    <i data-lucide="signal" class="status-icon"></i>
+                    <i data-lucide="wifi" class="status-icon"></i>
+                    <i data-lucide="battery" class="status-icon"></i>
+                </div>
+            </div>
+
+            <!-- Global Patient Header Context (Updated dynamically) -->
+            <header id="patient-header">
+                <div class="patient-info-container" id="header-patient-trigger">
+                    <img id="header-patient-avatar" src="" alt="Paciente Avatar" class="patient-avatar-mini">
+                    <div class="patient-text">
+                        <span class="patient-label">Paciente Ativo</span>
+                        <div class="patient-name-age">
+                            <span id="header-patient-name">Carregando...</span>
+                            <span class="separator">•</span>
+                            <span id="header-patient-age">--</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right-actions">
+                    <div class="header-action-btn" id="header-theme-btn" title="Mudar Tema">
+                        <i data-lucide="palette"></i>
+                    </div>
+                    <div class="header-action-btn" id="header-bell-btn">
+                        <i data-lucide="bell"></i>
+                    </div>
+                </div>
+                
+                <!-- Floating Theme Selector Menu -->
+                <div id="theme-selector-popover" class="hidden">
+                    <button class="theme-select-option" data-theme="light">
+                        <span class="theme-dot light"></span> Light
+                    </button>
+                    <button class="theme-select-option" data-theme="dark">
+                        <span class="theme-dot dark"></span> Dark
+                    </button>
+                    <button class="theme-select-option" data-theme="casual">
+                        <span class="theme-dot casual"></span> Casual
+                    </button>
+                    <button class="theme-select-option" data-theme="retro">
+                        <span class="theme-dot retro"></span> Retro
+                    </button>
+                </div>
+            </header>
+
+            <!-- Active Screen Container -->
+            <main id="app-content">
+                <!-- Dynamically populated by app.js -->
+                <div class="loading-screen">
+                    <div class="spinner"></div>
+                    <p>Iniciando Sofia...</p>
+                </div>
+            </main>
+
+            <!-- Bottom Navigation Menu -->
+            <nav id="nav-bar">
+                <button class="nav-item active" data-screen="home" id="nav-home">
+                    <i data-lucide="home"></i>
+                    <span>Início</span>
+                </button>
+                <button class="nav-item" data-screen="profiles" id="nav-profiles">
+                    <i data-lucide="users"></i>
+                    <span>Perfis</span>
+                </button>
+                <button class="nav-item special" data-screen="sofia" id="nav-sofia">
+                    <div class="sofia-btn-inner">
+                        <i data-lucide="brain-circuit"></i>
+                    </div>
+                    <span>Sofia</span>
+                </button>
+                <button class="nav-item" data-screen="diary" id="nav-diary">
+                    <i data-lucide="book-open"></i>
+                    <span>Diário</span>
+                </button>
+                <button class="nav-item" data-screen="settings" id="nav-settings">
+                    <i data-lucide="settings"></i>
+                    <span>Ajustes</span>
+                </button>
+            </nav>
+            
+            <!-- Global Floating Audio/Voice Status Overlay -->
+            <div id="voice-overlay" class="hidden">
+                <!-- Will be managed dynamically -->
+            </div>
+            
+            <!-- Global Modal Mount (for summaries, camera, etc.) -->
+            <div id="global-modal" class="modal-overlay hidden">
+                <div class="modal-container">
+                    <div class="modal-header">
+                        <h3 id="modal-title">Título</h3>
+                        <button class="close-modal-btn" id="close-modal-x">&times;</button>
+                    </div>
+                    <div class="modal-body" id="modal-body-content">
+                        <!-- Custom modal content goes here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JS Application Entry Point -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>

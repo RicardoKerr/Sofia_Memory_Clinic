@@ -1,0 +1,27 @@
+{
+  "name": "sofia-memoria-clinica",
+  "version": "1.0.0",
+  "description": "Sofia — Memória Clínica Inteligente para famílias e cuidadores.",
+  "main": "app.js",
+  "scripts": {
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "sqlite3": "^5.1.7"
+  },
+  "keywords": [
+    "healthtech",
+    "healthcare",
+    "diary",
+    "clinical-memory"
+  ],
+  "author": "Antigravity",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "sqlite3": "^6.0.1"
+  }
+}
