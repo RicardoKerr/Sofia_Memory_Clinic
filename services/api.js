@@ -31,7 +31,7 @@ const DEFAULT_PROFILES = [
         relation: 'Minha Mãe', // Relative context
         avatar: AVATARS.maria,
         gender: 'Feminino',
-        healthPlan: 'Dr. Consulta Protege',
+        healthPlan: 'Capivara Med',
         bloodType: 'O+'
     },
     {
