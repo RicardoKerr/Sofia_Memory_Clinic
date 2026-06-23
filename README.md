@@ -74,12 +74,18 @@ POC_Dr-Consulta-22-06-2026/
 
 ### Passo a Passo
 
-1.  **Instale as dependências** do projeto:
+1.  **Clone o repositório** para a sua máquina local:
+    ```bash
+    git clone https://github.com/RicardoKerr/Sofia_Memory_Clinic.git
+    cd Sofia_Memory_Clinic
+    ```
+
+2.  **Instale as dependências** do projeto:
     ```bash
     npm install
     ```
 
-2.  **Inicie o servidor de desenvolvimento**:
+3.  **Inicie o servidor de desenvolvimento**:
     ```bash
     npm run dev
     ```
